@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^16.8.4",
+    "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8"
   },
@@ -11,7 +12,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docs": "./node_modules/.bin/jsdoc -c jsdoc.json -R readme.md -P package.json "
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -21,5 +23,11 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "better-docs": "^1.1.5",
+    "jsdoc": "^3.5.5",
+    "react-testing-library": "^6.0.0",
+    "tui-jsdoc-template": "^1.2.2"
+  }
 }
