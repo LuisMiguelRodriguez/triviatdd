@@ -1,6 +1,6 @@
 
 ## Documenation
-[https://luismiguelrodriguez.github.io/triviatdd/App.html] (https://luismiguelrodriguez.github.io/triviatdd/App.html)
+[https://luismiguelrodriguez.github.io/triviatdd/App.html](https://luismiguelrodriguez.github.io/triviatdd/App.html)
 
 ## Available Scripts
 
