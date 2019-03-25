@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Question from './components/Question'
-import { ProgressBar, Container, Row, Col, Image, Button, Jumbotron } from 'react-bootstrap'
+import Question from './components/Question';
+import Answers from './components/Answers';
+import AnswersList from './components/AnswersList';
+import { Container, Row, Button, Jumbotron } from 'react-bootstrap'
 
 /**
  * 
@@ -104,61 +106,33 @@ class App extends Component {
     }
 
     render() {
-        const { questions, position } = this.state;
+        const { isGameOn, position, currentQ, currentAnswers } = this.state;
         return (
             <div>
                 <Container>
                     <Jumbotron style={{ textAlign: 'center' }}>
 
-                        {this.state.isGameOn ?
-                            <Container>
-                                <Row>
-                                    <Col xs={12} md={12} style={{ textAlign: 'center' }} >
-                                        <Image src="https://via.placeholder.com/300" thumbnail />
-
-                                        {this.state.currentQ ? <h3>{this.state.currentQ}</h3> : <h3></h3>}
-                                    </Col>
-                                </Row>
-                                <Container>
-                                    <Row>
-                                        <Col xs={12} md={12} style={{ textAlign: 'center', marginBottom: 20 }}>
-
-                                            <ProgressBar now={position * 10} />
-
-                                        </Col>
-                                        <Col xs={6} md={6} style={{ textAlign: 'center' }}>
-
-                                            <Button onClick={this.startTimer} variant="success">Start</Button>
-                                        </Col>
-                                        <Col xs={6} md={6} style={{ textAlign: 'center' }}>
-
-                                            <Button onClick={this.stopTimer} variant="danger">Stop</Button>
-                                        </Col>
-                                    </Row>
-                                </Container>
-                            </Container> :
+                        {isGameOn ?
+                            <Question
+                                postion={position}
+                                currentQ={currentQ}
+                                startTimer={this.startTimer}
+                                stopTimer={this.stopTimer} /> :
                             <Container>
                                 <h1>Computer Trivia</h1>
-                                <Button onClick={this.startTimer} variant="success">Start</Button>
+                                <Button
+                                    onClick={this.startTimer}
+                                    variant="success">
+                                    Start
+                                </Button>
                             </Container>
                         }
                     </Jumbotron>
-                    <Container >
-                        <Row>
-                            {this.state.currentAnswers.map(answer => {
-                                return (
-                                    <Col xs={6} md={6} style={{ textAlign: 'center' }}>
-                                        <Image src="https://via.placeholder.com/150" thumbnail />
-
-                                        <h3>{answer}</h3>
-                                    </Col>
-                                )
-                            })
-                            }
-                        </Row>
-                    </Container>
+                    <Row>
+                        <AnswersList answers={currentAnswers}/>
+                    </Row>
                 </Container>
-            </div>
+            </div >
         )
     }
 }
